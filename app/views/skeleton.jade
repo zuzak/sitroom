@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title Website!
+    block styles
+      link(href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css", rel="stylesheet")
+      link(href="//netdna.bootstrapcdn.com/bootswatch/3.0.0/spacelab/bootstrap.min.css",rel="stylesheet")
+    block meta
+      meta(name="viewport" content="width=device-width, initial-scale=1.0")
+      meta(charset=utf-8)
+  body
+    block navbar
+      div.navbar.navbar-inverse.navbar-static-top
+        div.navbar-header
+          a.navbar-brand(href="/") chippy.ch
+    div.container
+      block content
+      footer
+        a(href="/about") Π

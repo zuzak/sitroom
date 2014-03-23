@@ -1,0 +1,6 @@
+# stop npm data from being accidentally committed
+npm-debug.log
+node_modules
+
+# ignore machine-generated coverage code
+app-cov

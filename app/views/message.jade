@@ -1,0 +1,6 @@
+extends skeleton
+block content
+  - var ty = 'panel-' + type
+  div.panel(class=ty)
+    div.panel-heading #{header}
+    div.panel-body.pre #{msg}
