@@ -5,6 +5,9 @@ html
     block styles
       link(href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css", rel="stylesheet")
       link(href="//netdna.bootstrapcdn.com/bootswatch/3.0.0/spacelab/bootstrap.min.css",rel="stylesheet")
+      link(href="global.css", rel="stylesheet")
+    block scripts
+      script(src="http://code.jquery.com/jquery-1.11.0.min.js")
     block meta
       meta(name="viewport" content="width=device-width, initial-scale=1.0")
       meta(charset=utf-8)
@@ -13,7 +16,9 @@ html
       div.navbar.navbar-inverse.navbar-static-top
         div.navbar-header
           a.navbar-brand(href="/") chippy.ch
+        ul.navbar-nav.navbar-right.nav
+          block navbar-right
     div.container
       block content
       footer
-        a(href="/about") Π
+        a(href="/about") &#1488; <!-- aleph -->

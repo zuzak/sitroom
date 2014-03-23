@@ -1,16 +1,15 @@
 extends skeleton
 block content
-  div.panel.nostyle
-    ul.pull-right.pagination-disabled
-      li(style="color: #" + commit.substring(0,6)) #{commit}
-      if branch == "master"
-        li(style="color:green") #{branch}
-      else
-        li(style="color:red") #{branch}
+  h1 About
   div.panel.panel-default
-    div.panel-heading Commit information
+    div.panel-heading
+      span Latest commit
+      div.pull-right
+        span.label(style="background-color: #" + commit.substring(0,6)) #{commit}
+        span &nbsp;
+        span.label.label-default #{branch}
     div.panel-body
-      div.pre #{diff}
+      pre.diff #{diff}
   div.panel.panel-default
     div.panel-heading Contributors
     div.panel-body

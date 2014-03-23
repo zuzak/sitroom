@@ -4,3 +4,7 @@ node_modules
 
 # ignore machine-generated coverage code
 app-cov
+
+# ignore config
+config.json
+app/config.json

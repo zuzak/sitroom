@@ -1,3 +1,31 @@
 extends skeleton
+block append scripts
+  script(src="home.js")
+  script(src="jquery.timeago.js")
+block navbar-right
+  li
+    a(href="#").toggle Auto-update off
+  li
+    a.timer 0s
 block content
-  h1 hello
+  div.row
+    div.col-md-5
+      div.row
+        ul.col-md-7.list-group.sociallinks
+          li.list-group-item.active Social
+          li.list-group-item
+            a(href="https://pay.reddit.com") Reddit
+          li.list-group-item.imgur
+            a(href="//imgur.com") Imgur
+            span.pull-right.badge.badge-default(title="Last update to gallery")
+          li.list-group-item
+            a(href="https://4chan.org") 4chan 
+        ul.col-md-5.timezones
+      div.row
+        div.col-md-12
+          div.panel.panel-default
+            div.panel-body.marco
+      div.row
+        ul.col-md-12.activity
+    ul.col-md-7.news.list-group
+      li.list-group-item.active(data-news="1") BBC News
