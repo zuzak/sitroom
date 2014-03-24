@@ -27,5 +27,7 @@ require('./routes/about')(app)
 require('./routes/marco')(app)
 require('./routes/imgur')(app)
 require('./routes/news')(app)
+require('./routes/system')(app)
+require('./routes/comics')(app)
 require('./routes/error')(app) // should always be last
 

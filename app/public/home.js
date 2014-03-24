@@ -1,25 +1,46 @@
-var doUpdate = false, timer = 0
+var doUpdate = 30, timer = doUpdate
 $(document).ready(function() {
   updateTimes(true)
   perrenial()
 
-  $('.timer').hide()
+  if (timer == 0) {
+    $('.toggle').text('Auto-update off')
+    $('.timer').hide()
+  } else {
+    $('.toggle').text('Updating every ' + doUpdate + ' seconds')
+  }
 
   $('.toggle').click(function () {
     if (doUpdate) {
       doUpdate = false
-      $('.toggle').text('Auto-update off')
+      var now = new Date()
+      $('.toggle').html('Last updated <abbr class="timeago" title="' + now.toISOString() + '">Click to toggle auto-update.</abbr>')
+      $('abbr.timeago').timeago()
       $('.timer').fadeOut()
     } else {
       doUpdate = 30
       $('.toggle').text('Updating every ' + doUpdate + ' seconds')
       perrenial()
       timer = doUpdate
-      console.log("A")
       $('.timer').fadeIn()
     }
   })
 
+  $.getJSON('api/system.json', function (data) {
+    var now = new Date()
+    var then = data.uptime * 1000
+    var ut = new Date(Math.abs(now.getTime() - then))
+    ut = ut.toISOString()
+    $('footer').prepend('Server last restarted <abbr class="timeago" title="' + ut + '">' + ut + '</abbr>.')
+    $('abbr.timeago').timeago()
+  })
+
+  $.getJSON('api/comics.json', function (comics) {
+    $.each(comics, function (comic) {
+      console.log(comic)
+      $('.comics').append('<li class="list-group-item"><a href="' + comics[comic][1] + '">' + comics[comic][0] + '</a></li>')
+    })
+  })
 })
   
   
@@ -41,9 +62,14 @@ function perrenial() {
       hex += (String.charCodeAt(letter) % 16).toString(16)
     })
     $('.imgur .badge').css('background-color', '#' + hex.substr(0,6))
-    var upd = new Date(0)
-    upd.setUTCSeconds(data.datetime)
-    $('.imgur .badge').text(((upd.getHours() + 11) % 12 + 1) + ((upd.getHours() < 12) ? "am" : "pm"))
+    $('.imgur a').attr('href', 'https://imgur.com/gallery/' + data.id)
+    if (data.section) {
+      $('.imgur .badge').text('r/' + data.section)
+    } else {
+      var upd = new Date(0)
+      upd.setUTCSeconds(data.datetime)
+      $('.imgur .badge').text(((upd.getHours() + 11) % 12 + 1) + ((upd.getHours() < 12) ? "am" : "pm"))
+    }
   })
   $.getJSON('http://cabinetoffice.gsi.zuzakistan.com/census.json', function (data) {
     var entries = data.denizens
@@ -68,7 +94,7 @@ function perrenial() {
   $.getJSON('http://cabinetoffice.gsi.zuzakistan.com/activity.json', function (data) {
       var str = ''
       $.each(data, function(id, datum) {
-        str += '<li class="list-group-item"><span class="nick">' + datum.nick + '</span> spoke in'
+        str += '<li class="list-group-item"><span class="nick">' + datum.nick.toTitleCase() + '</span> spoke in'
         str += ' <span class="chan">' + id + '</span>' + ' <abbr class="timeago" title="'
         str += new Date(datum.time).toISOString() + '">' + new Date(datum.time).toLocaleTimeString() + '</abbr>.'
       })
@@ -106,7 +132,6 @@ function perrenial() {
   if (doUpdate) {
     window.setTimeout(perrenial, doUpdate * 1000)
     timer = doUpdate
-    console.log("B", timer)
   }
 }
 
@@ -123,7 +148,7 @@ function updateTimes(reboot) {
   })
   if (doUpdate) { 
     timer-- 
-    $('.timer').text('(' + (timer) + 's)')
+    $('.timer').text('(' + (timer+1) + 's)')
   }
   if (reboot) {
     window.setTimeout(updateTimes, 1000, reboot)

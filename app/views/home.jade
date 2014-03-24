@@ -8,7 +8,12 @@ block navbar-right
   li
     a.timer 0s
 block content
-  div.row
+ form.row(action="https://google.co.uk/search")
+  div.form-group.col-md-10
+    input(type="text",placeholder="Search Google",name="q",autofocus).form-control
+  div.form-group.col-md-2
+    input(type="submit",name="btnG").form-control
+ div.row
     div.col-md-5
       div.row
         ul.col-md-7.list-group.sociallinks
@@ -29,3 +34,18 @@ block content
         ul.col-md-12.activity
     ul.col-md-7.news.list-group
       li.list-group-item.active(data-news="1") BBC News
+
+  div.row
+    div.col-md-4
+    ul.col-md-5.comics
+      li.list-group-item.active Comics updating today
+    ul.col-md-3.list-group.foss
+      li.list-group-item
+        a(href="https://bugzilla.wikimedia.org") Bugzilla
+        a.pull-right(href="http://bit.ly/OKNR0D") i18n easy
+      li.list-group-item
+        a(href="https://gerrit.wikimedia.org") Gerrit
+        a.pull-right(href="https://gerrit.wikimedia.org/r/#/q/status:open+project:mediawiki/core,n,z") open core
+      li.list-group-item
+        a(href="http://git.wikimedia.org/summary/mediawiki%2Fcore.git") Core
+        a.pull-right(href="http://git.wikimedia.org/search/?s=Douglas+Gardner&r=mediawiki/core.git&st=AUTHOR") mine

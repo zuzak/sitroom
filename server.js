@@ -8,7 +8,8 @@
  * into the machine-readable source if required.
  */
 
-var cluster = require('cluster')
+var app = require('./app')
+/*var cluster = require('cluster')
 
 var appLocation = './app'
 
@@ -29,4 +30,4 @@ cluster.on('exit', function(worker) {
   // the worker is dead; long live the worker
   cluster.fork()
 })
-
+*/
