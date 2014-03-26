@@ -10,7 +10,7 @@ module.exports = function (app) {
       }
       $('img').each(function (pre) {
         var time = pre.attribs.src
-        var msg = "xx"
+        var msg = null
         if (time.indexOf('current_time') != -1) {
           time = time.split('_')
           time = [time[3], time[4].split('.png')[0]]

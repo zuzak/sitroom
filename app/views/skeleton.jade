@@ -16,9 +16,15 @@ html
       div.navbar.navbar-inverse.navbar-static-top
         div.navbar-header
           a.navbar-brand(href="/") chippy.ch
+        ul.navbar-nav.nav
+          li
+            a(href="/") Dashboard
+          li
+            a(href="/wmf") Wikimedia
         ul.navbar-nav.navbar-right.nav
           block navbar-right
     div.container
       block content
       footer
-        a.pull-right(href="/about") &#1488; <!-- aleph -->
+        block footer
+          a.version.pull-right(href="/about") &#1488; <!-- aleph -->

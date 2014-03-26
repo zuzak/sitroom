@@ -1,0 +1,23 @@
+extends skeleton
+block append scripts
+  script(src="dev.js")
+block content
+  div.row
+    div.col-md-6
+      ul.list-group(style="min-height:140px")
+        li.list-group-item
+          a(href="https://bugzilla.wikimedia.org") Bugzilla
+          a.pull-right(href="http://bit.ly/OKNR0D") easy i18n bugs
+        li.list-group-item
+          a(href="https://gerrit.wikimedia.org") Gerrit
+          a.pull-right(href="https://gerrit.wikimedia.org/r/#/q/status:open+project:mediawiki/core,n,z") pending core
+          span.pull-right &nbsp;&middot;&nbsp;
+          a.pull-right(href="https://www.mediawiki.org/wiki/Gerrit/Getting_started") cheat sheet
+        li.list-group-item
+          a(href="http://git.wikimedia.org/summary/mediawiki%2Fcore.git") Source
+          a.pull-right(href="http://git.wikimedia.org/search/?s=Douglas+Gardner&r=mediawiki/core.git&st=AUTHOR") my contributions
+    div.col-md-6
+      ul.list-group
+        li.list-group-item
+          a(href="https://en.wikinews.org/wiki/Special:RecentChanges") Wikinews
+          span.pull-right.label.reviewcount

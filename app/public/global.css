@@ -5,3 +5,6 @@ li.breaking {
 .news .active, .news .active:hover {
   text-align:center;
 }
+footer .version a:hover:before {
+  content: "view credits "
+}

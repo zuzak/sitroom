@@ -50,7 +50,7 @@ function perrenial() {
       $('.marco').text('Marco is currently closed.')
       $('.marco').parent('div').addClass('panel-warning')
     } else {
-      $('.marco').text('Marco can deliver in ' + data.deliver + ' minutes.')
+      $('.marco').text('Marco can deliver in ' + data.delivery + ' minutes.')
       $('.marco').parent('div').addClass('panel-success')
     }
   })
@@ -59,7 +59,11 @@ function perrenial() {
     var slug = data.id.split('')
     var hex = '' 
     slug.forEach(function (letter) {
-      hex += (String.charCodeAt(letter) % 16).toString(16)
+      try {
+        hex += (String.charCodeAt(letter) % 16).toString(16)
+      } catch (e) {
+        hex += '0'
+      }
     })
     $('.imgur .badge').css('background-color', '#' + hex.substr(0,6))
     $('.imgur a').attr('href', 'https://imgur.com/gallery/' + data.id)

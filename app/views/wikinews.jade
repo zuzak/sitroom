@@ -1,0 +1,33 @@
+extends skeleton
+block navbar
+block append scripts
+  script(src="wikinews.js")
+block content
+  div.row
+    div.col-md-4
+      h3.text-primary
+        span Developing
+        span.pull-right.dev-arrow &rarr;
+      ul.list-group.developing
+    div.col-md-4
+      div.reviews
+        h3.text-warning
+          span Pending Review
+          span.pull-right.rev-arrow &rarr;
+        ul.list-group.review
+      div.disputes
+        h3.text-danger
+          span Disputed
+          small.pull-right.dis-arrow (No articles to review)
+        ul.list-group.disputed
+    div.col-md-4
+      h3.text-success
+        span Published
+        span.pub-arrow
+      ul.list-group.published
+block append footer
+  noscript
+    span Enable JavaScript to get started ·
+  span
+    a(href="https://en.wikinews.org") Wikinews
+    span &nbsp;updates automatically every thirty seconds
