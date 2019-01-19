@@ -1,0 +1,22 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.13.3
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:hawk:20160119':
+    - utsire > request > hawk:
+        patched: '2019-01-19T04:42:54.109Z'
+  'npm:http-signature:20150122':
+    - utsire > request > http-signature:
+        patched: '2019-01-19T04:42:54.109Z'
+  'npm:mime:20170907':
+    - utsire > request > mime:
+        patched: '2019-01-19T04:42:54.109Z'
+    - utsire > request > form-data > mime:
+        patched: '2019-01-19T04:42:54.109Z'
+  'npm:qs:20140806-1':
+    - utsire > request > qs:
+        patched: '2019-01-19T04:42:54.109Z'
+  'npm:request:20160119':
+    - utsire > request:
+        patched: '2019-01-19T04:42:54.109Z'
